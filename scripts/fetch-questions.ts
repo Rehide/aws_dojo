@@ -5,8 +5,8 @@
 import { writeFileSync } from "fs";
 import { join } from "path";
 
-const blobUrl = process.env.QUESTIONS_BLOB_URL;
-const token = process.env.BLOB_READ_WRITE_TOKEN;
+const blobUrl = process.env.QUESTIONS_BLOB_URL?.trim();
+const token = process.env.BLOB_READ_WRITE_TOKEN?.trim();
 
 if (!blobUrl) {
   console.error("エラー: 環境変数 QUESTIONS_BLOB_URL が設定されていません");
