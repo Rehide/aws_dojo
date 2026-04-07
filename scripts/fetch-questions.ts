@@ -8,13 +8,14 @@ import { join } from "path";
 const blobUrl = process.env.QUESTIONS_BLOB_URL?.trim();
 const token = process.env.BLOB_READ_WRITE_TOKEN?.trim();
 
-if (!blobUrl) {
-  console.error("エラー: 環境変数 QUESTIONS_BLOB_URL が設定されていません");
-  process.exit(1);
-}
-if (!token) {
-  console.error("エラー: 環境変数 BLOB_READ_WRITE_TOKEN が設定されていません");
-  process.exit(1);
+console.log("QUESTIONS_BLOB_URL:", blobUrl ? "set" : "NOT SET");
+console.log("BLOB_READ_WRITE_TOKEN:", token ? "set" : "NOT SET");
+
+if (!blobUrl || !token) {
+  console.warn("警告: 環境変数が設定されていないため空の questions.json を生成します");
+  const outputPath = join(process.cwd(), "src/data/questions.json");
+  writeFileSync(outputPath, "[]", "utf-8");
+  process.exit(0);
 }
 
 async function main(url: string, authToken: string) {
