@@ -2,8 +2,8 @@
  * Vercel Blob から questions.json を取得するスクリプト。
  * ビルド前に自動実行される（prebuild フック）。
  */
-import { writeFileSync } from "fs";
-import { join } from "path";
+import { mkdirSync, writeFileSync } from "fs";
+import { dirname, join } from "path";
 
 const blobUrl = process.env.QUESTIONS_BLOB_URL?.trim();
 const token = process.env.BLOB_READ_WRITE_TOKEN?.trim();
@@ -14,6 +14,7 @@ console.log("BLOB_READ_WRITE_TOKEN:", token ? "set" : "NOT SET");
 if (!blobUrl || !token) {
   console.warn("警告: 環境変数が設定されていないため空の questions.json を生成します");
   const outputPath = join(process.cwd(), "src/data/questions.json");
+  mkdirSync(dirname(outputPath), { recursive: true });
   writeFileSync(outputPath, "[]", "utf-8");
   process.exit(0);
 }
@@ -31,6 +32,7 @@ async function main(url: string, authToken: string) {
 
   const content = await response.text();
   const outputPath = join(process.cwd(), "src/data/questions.json");
+  mkdirSync(dirname(outputPath), { recursive: true });
   writeFileSync(outputPath, content, "utf-8");
   console.log(`questions.json を取得しました: ${outputPath}`);
 }
