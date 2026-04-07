@@ -9,6 +9,9 @@ import type { Question } from "@/types/question";
 const questions = questionsData as Question[];
 
 export const metadata: Metadata = {
+  verification: {
+    google: "2r5ytV3xEQ7clzHxlWzewW-n56AXj__BGijJVHE4xkE",
+  },
   title: "AWS MLA-C01 演習道場",
   description:
     "AWS Certified Machine Learning Engineer – Associate（MLA-C01）の試験対策サイト。100問の練習問題でドメイン別に学習できます。",
