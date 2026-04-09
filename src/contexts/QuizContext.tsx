@@ -9,10 +9,14 @@ import {
 } from "react";
 import { selectQuestions } from "@/utils/selectQuestions";
 import { shuffleChoices } from "@/utils/shuffle";
+import { getQuestions } from "@/lib/questions";
+import type { ExamId } from "@/constants/exams";
 import type { QuizSession, QuizSettings, AnswerRecord } from "@/types/quiz";
 import type { Question } from "@/types/question";
 
 interface QuizContextValue {
+  selectedExamId: ExamId;
+  selectExam: (examId: ExamId) => void;
   session: QuizSession | null;
   startQuiz: (settings: QuizSettings) => void;
   answerQuestion: (questionId: number, choiceId: string) => void;
@@ -25,6 +29,8 @@ interface QuizContextValue {
 }
 
 export const QuizContext = createContext<QuizContextValue>({
+  selectedExamId: 'MLA-C01',
+  selectExam: () => {},
   session: null,
   startQuiz: () => {},
   answerQuestion: () => {},
@@ -61,22 +67,19 @@ function buildSession(
   };
 }
 
-export function QuizProvider({
-  children,
-  allQuestions,
-}: {
-  children: ReactNode;
-  allQuestions: Question[];
-}) {
+export function QuizProvider({ children }: { children: ReactNode }) {
+  const [selectedExamId, setSelectedExamId] = useState<ExamId>('MLA-C01');
   const [session, setSession] = useState<QuizSession | null>(null);
 
-  const startQuiz = useCallback(
-    (settings: QuizSettings) => {
-      const questions = selectQuestions(allQuestions, settings);
-      setSession(buildSession(questions, settings));
-    },
-    [allQuestions],
-  );
+  const selectExam = useCallback((examId: ExamId) => {
+    setSelectedExamId(examId);
+  }, []);
+
+  const startQuiz = useCallback((settings: QuizSettings) => {
+    const allQuestions = getQuestions(settings.examId);
+    const questions = selectQuestions(allQuestions, settings);
+    setSession(buildSession(questions, settings));
+  }, []);
 
   const answerQuestion = useCallback(
     (questionId: number, choiceId: string) => {
@@ -151,10 +154,11 @@ export function QuizProvider({
   const restartWithSameSettings = useCallback(() => {
     setSession((prev) => {
       if (!prev) return prev;
+      const allQuestions = getQuestions(prev.settings.examId);
       const questions = selectQuestions(allQuestions, prev.settings);
       return buildSession(questions, prev.settings);
     });
-  }, [allQuestions]);
+  }, []);
 
   const reset = useCallback(() => {
     setSession(null);
@@ -162,6 +166,8 @@ export function QuizProvider({
 
   const value = useMemo(
     () => ({
+      selectedExamId,
+      selectExam,
       session,
       startQuiz,
       answerQuestion,
@@ -173,6 +179,8 @@ export function QuizProvider({
       reset,
     }),
     [
+      selectedExamId,
+      selectExam,
       session,
       startQuiz,
       answerQuestion,

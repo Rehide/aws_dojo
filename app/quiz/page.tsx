@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useQuiz } from "@/hooks/useQuiz";
-import { DOMAIN_LABELS } from "@/constants/domains";
+import { EXAM_CONFIGS } from "@/constants/exams";
 import { ChoiceButton, type ChoiceButtonState } from "@/components/ChoiceButton";
 import { FeedbackPanel } from "@/components/FeedbackPanel";
 import { ProgressBar } from "@/components/ProgressBar";
@@ -11,7 +11,7 @@ import type { DisplayChoice } from "@/types/quiz";
 
 export default function QuizPage() {
   const router = useRouter();
-  const { session, answerQuestion, goToQuestion, finishQuiz } = useQuiz();
+  const { session, selectedExamId, answerQuestion, goToQuestion, finishQuiz } = useQuiz();
 
   useEffect(() => {
     if (session === null) {
@@ -110,7 +110,7 @@ export default function QuizPage() {
             className="rounded-full px-3 py-0.5 text-xs font-medium text-white"
             style={{ backgroundColor: "#1E3A5F" }}
           >
-            Domain {question.domain}: {DOMAIN_LABELS[question.domain]}
+            Domain {question.domain}: {EXAM_CONFIGS[selectedExamId].domainLabels[question.domain]}
           </span>
         </div>
         <ProgressBar current={currentIndex} total={questions.length} />

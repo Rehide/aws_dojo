@@ -1,4 +1,3 @@
-import type { DomainId } from "@/constants/domains";
 import type { Question } from "@/types/question";
 import type { AnswerRecord, DomainStat } from "@/types/quiz";
 
@@ -6,10 +5,7 @@ export function calculateDomainStats(
   questions: Question[],
   answers: AnswerRecord[],
 ): DomainStat[] {
-  const map = new Map<
-    DomainId,
-    { total: number; correct: number }
-  >();
+  const map = new Map<number, { total: number; correct: number }>();
 
   questions.forEach((q, i) => {
     const answer = answers[i];

@@ -1,5 +1,5 @@
-import type { DomainId } from "@/constants/domains";
-import type { Question } from "@/types/question";
+import type { ExamId } from '@/constants/exams';
+import type { Question } from '@/types/question';
 
 /**
  * 学習モード
@@ -10,8 +10,9 @@ export type QuizMode = "practice" | "exam";
 
 /** 出題設定 */
 export interface QuizSettings {
+  examId: ExamId;
   mode: QuizMode;
-  domains: DomainId[]; // 選択されたドメイン（1つ以上）
+  domains: number[]; // 選択されたドメイン（1つ以上）
   questionCount: QuestionCount;
   shuffleChoices: boolean;
 }
@@ -44,7 +45,7 @@ export interface QuizSession {
 
 /** ドメイン別統計 */
 export interface DomainStat {
-  domain: DomainId;
+  domain: number;
   total: number;
   correct: number;
   rate: number; // 0.0 〜 1.0

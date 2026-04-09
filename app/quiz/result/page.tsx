@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQuiz } from "@/hooks/useQuiz";
-import { DOMAIN_LABELS } from "@/constants/domains";
+import { EXAM_CONFIGS } from "@/constants/exams";
 import { calculateScore } from "@/utils/scoring";
 import { calculateDomainStats, detectWeakness } from "@/utils/domainStats";
 
 export default function ResultPage() {
   const router = useRouter();
-  const { session, retryIncorrect, retryUnanswered, restartWithSameSettings, reset } =
+  const { session, selectedExamId, retryIncorrect, retryUnanswered, restartWithSameSettings, reset } =
     useQuiz();
 
   const [filter, setFilter] = useState<"all" | "incorrect" | "unanswered">(
@@ -96,7 +96,7 @@ export default function ResultPage() {
             <div key={stat.domain}>
               <div className="mb-1 flex items-center justify-between text-sm">
                 <span className="font-medium text-slate-700">
-                  Domain {stat.domain}: {DOMAIN_LABELS[stat.domain]}
+                  Domain {stat.domain}: {EXAM_CONFIGS[selectedExamId].domainLabels[stat.domain]}
                 </span>
                 <span className="text-slate-600">
                   {stat.correct}/{stat.total}正解 （{ratePercent(stat.rate)}）

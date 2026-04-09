@@ -1,39 +1,45 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { DOMAIN_LABELS, type DomainId } from "@/constants/domains";
+import { useState, useMemo, useEffect } from "react";
+import { EXAM_CONFIGS, type ExamId } from "@/constants/exams";
+import { getQuestions } from "@/lib/questions";
 import type { QuizMode, QuizSettings, QuestionCount } from "@/types/quiz";
-import type { Question } from "@/types/question";
 
 const QUESTION_COUNTS: QuestionCount[] = [10, 20, 30, 50, 100];
 
 interface Props {
-  allQuestions: Question[];
+  selectedExamId: ExamId;
   onStart: (settings: QuizSettings) => void;
 }
 
-export function QuizSettingsPanel({ allQuestions, onStart }: Props) {
+export function QuizSettingsPanel({ selectedExamId, onStart }: Props) {
+  const examConfig = EXAM_CONFIGS[selectedExamId];
+  const domainIds = examConfig.domainIds;
+
   const [mode, setMode] = useState<QuizMode>("practice");
-  const [selectedDomains, setSelectedDomains] = useState<Set<DomainId>>(
-    new Set([1, 2, 3, 4]),
+  const [selectedDomains, setSelectedDomains] = useState<Set<number>>(
+    new Set(domainIds),
   );
   const [questionCount, setQuestionCount] = useState<QuestionCount>(20);
   const [shuffleChoices, setShuffleChoices] = useState(true);
 
+  // 試験切替時にドメイン選択をリセット
+  useEffect(() => {
+    setSelectedDomains(new Set(EXAM_CONFIGS[selectedExamId].domainIds));
+  }, [selectedExamId]);
+
   const isExam = mode === "exam";
 
   const availableCount = useMemo(() => {
-    const domains = isExam ? ([1, 2, 3, 4] as DomainId[]) : [...selectedDomains];
+    const allQuestions = getQuestions(selectedExamId);
+    const domains = isExam ? domainIds : [...selectedDomains];
     return allQuestions.filter((q) => domains.includes(q.domain)).length;
-  }, [allQuestions, isExam, selectedDomains]);
+  }, [selectedExamId, isExam, selectedDomains, domainIds]);
 
-  const effectiveDomains = isExam
-    ? ([1, 2, 3, 4] as DomainId[])
-    : [...selectedDomains];
-
+  const effectiveDomains = isExam ? domainIds : [...selectedDomains];
   const canStart = effectiveDomains.length > 0;
 
-  const handleDomainChange = (domain: DomainId, checked: boolean) => {
+  const handleDomainChange = (domain: number, checked: boolean) => {
     setSelectedDomains((prev) => {
       const next = new Set(prev);
       if (checked) {
@@ -46,12 +52,13 @@ export function QuizSettingsPanel({ allQuestions, onStart }: Props) {
   };
 
   const handleStart = () => {
-    const domains = isExam ? ([1, 2, 3, 4] as DomainId[]) : [...selectedDomains];
+    const domains = isExam ? domainIds : [...selectedDomains];
     const actualCount = Math.min(
       questionCount,
       availableCount,
     ) as QuestionCount;
     onStart({
+      examId: selectedExamId,
       mode,
       domains,
       questionCount: actualCount,
@@ -99,7 +106,7 @@ export function QuizSettingsPanel({ allQuestions, onStart }: Props) {
             出題ドメイン
           </h3>
           <div className="space-y-2">
-            {([1, 2, 3, 4] as DomainId[]).map((domain) => (
+            {domainIds.map((domain) => (
               <label
                 key={domain}
                 className={`flex items-center gap-3 rounded-lg border p-3 text-sm transition-colors ${
@@ -116,7 +123,7 @@ export function QuizSettingsPanel({ allQuestions, onStart }: Props) {
                   className="h-4 w-4 accent-teal-600"
                 />
                 <span>
-                  ドメイン {domain}: {DOMAIN_LABELS[domain]}
+                  ドメイン {domain}: {examConfig.domainLabels[domain]}
                 </span>
               </label>
             ))}

@@ -1,5 +1,5 @@
 /**
- * Vercel Blob から questions.json を取得するスクリプト。
+ * Vercel Blob から mla-c01/questions.json を取得するスクリプト。
  * ビルド前に自動実行される（prebuild フック）。
  */
 import { mkdirSync, writeFileSync } from "fs";
@@ -12,10 +12,7 @@ console.log("QUESTIONS_BLOB_URL:", blobUrl ? "set" : "NOT SET");
 console.log("BLOB_READ_WRITE_TOKEN:", token ? "set" : "NOT SET");
 
 if (!blobUrl || !token) {
-  console.warn("警告: 環境変数が設定されていないため空の questions.json を生成します");
-  const outputPath = join(process.cwd(), "src/data/questions.json");
-  mkdirSync(dirname(outputPath), { recursive: true });
-  writeFileSync(outputPath, "[]", "utf-8");
+  console.warn("警告: 環境変数が設定されていないため、既存の問題データを使用します");
   process.exit(0);
 }
 
@@ -31,7 +28,7 @@ async function main(url: string, authToken: string) {
   }
 
   const content = await response.text();
-  const outputPath = join(process.cwd(), "src/data/questions.json");
+  const outputPath = join(process.cwd(), "src/data/mla-c01/questions.json");
   mkdirSync(dirname(outputPath), { recursive: true });
   writeFileSync(outputPath, content, "utf-8");
   console.log(`questions.json を取得しました: ${outputPath}`);
