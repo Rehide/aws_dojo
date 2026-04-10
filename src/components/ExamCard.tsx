@@ -12,7 +12,7 @@ export function ExamCard({ exam, isSelected, onSelect }: Props) {
   return (
     <button
       onClick={() => onSelect(exam.id)}
-      className={`flex flex-col items-center gap-1 rounded-xl border-2 p-4 text-center transition-colors ${
+      className={`flex flex-col items-center gap-1 rounded-xl border-2 p-3 text-center transition-colors ${
         isSelected
           ? "border-teal-500 bg-teal-50"
           : "border-slate-200 bg-white hover:border-teal-300"
@@ -25,9 +25,7 @@ export function ExamCard({ exam, isSelected, onSelect }: Props) {
         {exam.name}
       </span>
       <span className="text-xs text-slate-500">{exam.shortName}</span>
-      <span className="mt-1 text-xs text-slate-400">
-        {exam.totalQuestions}問
-      </span>
+
     </button>
   );
 }

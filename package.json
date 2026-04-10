@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "tsx scripts/fetch-questions.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -13,7 +12,6 @@
     "environment": "jsdom"
   },
   "dependencies": {
-    "@vercel/blob": "^2.3.3",
     "next": "15.5.14",
     "react": "19.1.0",
     "react-dom": "19.1.0",
