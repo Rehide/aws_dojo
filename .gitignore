@@ -31,9 +31,9 @@ tsconfig.tsbuildinfo
 
 # Project docs (private)
 CLAUDE.md
-plan.md
-spec.md
 skill.md
+plan*.md
+spec*.md
 
 # Quiz data (private)
 src/data/questions.json
