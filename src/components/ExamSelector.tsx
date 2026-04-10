@@ -1,6 +1,6 @@
 "use client";
 
-import { EXAM_IDS, EXAM_CONFIGS, type ExamId } from "@/constants/exams";
+import { EXAM_IDS, EXAM_CONFIGS, type ExamId, type ExamLevel } from "@/constants/exams";
 import { ExamCard } from "@/components/ExamCard";
 
 interface Props {
@@ -8,21 +8,42 @@ interface Props {
   onSelect: (examId: ExamId) => void;
 }
 
+const LEVEL_LABELS: Record<ExamLevel, string> = {
+  Foundational: 'Foundational',
+  Associate: 'Associate',
+};
+
+const LEVEL_ORDER: ExamLevel[] = ['Foundational', 'Associate'];
+
 export function ExamSelector({ selectedExamId, onSelect }: Props) {
+  const grouped = LEVEL_ORDER.map((level) => ({
+    level,
+    exams: EXAM_IDS.filter((id) => EXAM_CONFIGS[id].level === level),
+  }));
+
   return (
-    <div className="mx-auto w-full max-w-xl px-4 pb-2 pt-4">
+    <div className="mx-auto w-full max-w-2xl px-4 pb-2 pt-4">
       <div className="rounded-2xl bg-white p-6 shadow-md">
         <h2 className="mb-4 text-xl font-bold" style={{ color: "#1E3A5F" }}>
           試験を選択
         </h2>
-        <div className="grid grid-cols-3 gap-3">
-          {EXAM_IDS.map((examId) => (
-            <ExamCard
-              key={examId}
-              exam={EXAM_CONFIGS[examId]}
-              isSelected={selectedExamId === examId}
-              onSelect={onSelect}
-            />
+        <div className="space-y-5">
+          {grouped.map(({ level, exams }) => (
+            <div key={level}>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                {LEVEL_LABELS[level]}
+              </p>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {exams.map((examId) => (
+                  <ExamCard
+                    key={examId}
+                    exam={EXAM_CONFIGS[examId]}
+                    isSelected={selectedExamId === examId}
+                    onSelect={onSelect}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

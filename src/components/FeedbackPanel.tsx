@@ -1,12 +1,23 @@
 import type { DisplayChoice } from "@/types/quiz";
+import type { ChoiceExplanations } from "@/types/question";
 
 interface Props {
   isCorrect: boolean;
   correctChoice: DisplayChoice;
+  selectedChoiceId: string;
   explanation: string;
+  displayChoices: DisplayChoice[];
+  choiceExplanations?: ChoiceExplanations;
 }
 
-export function FeedbackPanel({ isCorrect, correctChoice, explanation }: Props) {
+export function FeedbackPanel({
+  isCorrect,
+  correctChoice,
+  selectedChoiceId,
+  explanation,
+  displayChoices,
+  choiceExplanations,
+}: Props) {
   return (
     <div
       className={`rounded-xl border-2 p-4 ${
@@ -35,6 +46,54 @@ export function FeedbackPanel({ isCorrect, correctChoice, explanation }: Props) 
           {explanation}
         </p>
       </div>
+
+      {choiceExplanations && (
+        <div className="mt-4">
+          <h4 className="mb-2 text-sm font-semibold text-slate-700">
+            【各選択肢のポイント】
+          </h4>
+          <div className="space-y-2">
+            {displayChoices.map((choice) => {
+              const choiceKey = choice.id as keyof ChoiceExplanations;
+              const isCorrectChoice = choice.id === correctChoice.id;
+              const isSelectedWrong =
+                choice.id === selectedChoiceId && !isCorrect;
+
+              const containerClass = isCorrectChoice
+                ? "rounded-lg border border-green-200 bg-green-50 p-3"
+                : isSelectedWrong
+                  ? "rounded-lg border border-red-200 bg-red-50 p-3"
+                  : "rounded-lg border border-slate-200 bg-slate-50 p-3";
+
+              const icon = isCorrectChoice ? (
+                <span className="mt-0.5 shrink-0 text-xs font-bold text-green-600">
+                  ✓
+                </span>
+              ) : isSelectedWrong ? (
+                <span className="mt-0.5 shrink-0 text-xs font-bold text-red-600">
+                  ✗
+                </span>
+              ) : (
+                <span className="mt-0.5 w-3 shrink-0" />
+              );
+
+              return (
+                <div key={choice.id} className={containerClass}>
+                  <div className="flex items-start gap-2">
+                    {icon}
+                    <span className="mt-0.5 shrink-0 text-xs font-semibold text-slate-600">
+                      {choice.label}.
+                    </span>
+                    <p className="text-sm text-slate-600">
+                      {choiceExplanations[choiceKey]}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

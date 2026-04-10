@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQuiz } from "@/hooks/useQuiz";
 import { EXAM_CONFIGS } from "@/constants/exams";
@@ -12,6 +12,7 @@ import type { DisplayChoice } from "@/types/quiz";
 export default function QuizPage() {
   const router = useRouter();
   const { session, selectedExamId, answerQuestion, goToQuestion, finishQuiz } = useQuiz();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (session === null) {
@@ -73,6 +74,7 @@ export default function QuizPage() {
   const handleFinish = () => {
     if (!isLastQuestion) return;
     if (isPractice && !isAnswered) return;
+    if (isSubmitting) return;
 
     const unansweredCount = answers.filter(
       (a) => a.selectedChoiceId === null,
@@ -88,6 +90,7 @@ export default function QuizPage() {
       }
     }
 
+    setIsSubmitting(true);
     finishQuiz();
     router.push("/quiz/result");
   };
@@ -146,7 +149,10 @@ export default function QuizPage() {
           <FeedbackPanel
             isCorrect={answer.isCorrect}
             correctChoice={correctChoice}
+            selectedChoiceId={answer.selectedChoiceId!}
             explanation={question.explanation}
+            displayChoices={answer.displayChoices}
+            choiceExplanations={question.choiceExplanations}
           />
         </div>
       )}
@@ -166,8 +172,7 @@ export default function QuizPage() {
         {!isLastQuestion && (
           <button
             onClick={handleNext}
-            className="rounded-xl px-5 py-2.5 text-sm font-medium text-white transition-opacity"
-            style={{ backgroundColor: "#0D9488" }}
+            className="rounded-xl bg-[#0D9488] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#0b7a70]"
           >
             次の問題 →
           </button>
@@ -176,11 +181,13 @@ export default function QuizPage() {
         {isLastQuestion && (
           <button
             onClick={handleFinish}
-            disabled={isPractice && !isAnswered}
-            className="rounded-xl px-5 py-2.5 text-sm font-bold text-white transition-opacity disabled:opacity-40"
-            style={{ backgroundColor: "#1E3A5F" }}
+            disabled={(isPractice && !isAnswered) || isSubmitting}
+            className="flex items-center gap-2 rounded-xl bg-[#1E3A5F] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#172d4a] disabled:opacity-40"
           >
-            {isPractice ? "結果を見る" : "採点する"}
+            {isSubmitting && (
+              <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+            )}
+            {isSubmitting ? "採点中..." : isPractice ? "結果を見る" : "採点する"}
           </button>
         )}
       </div>

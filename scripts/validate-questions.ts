@@ -1,6 +1,7 @@
 import { EXAM_IDS, EXAM_CONFIGS, type ExamId } from "../src/constants/exams";
 
 type Choice = { id: string; text: string };
+type ChoiceExplanations = { c1: string; c2: string; c3: string; c4: string };
 type Question = {
   id: number;
   domain: number;
@@ -8,6 +9,7 @@ type Question = {
   choices: Choice[];
   correctChoiceId: string;
   explanation: string;
+  choiceExplanations?: ChoiceExplanations;
 };
 
 // ドメイン分布の期待値（試験ごと）
@@ -15,6 +17,10 @@ const EXPECTED_DOMAIN_COUNTS: Record<ExamId, Record<number, number>> = {
   'MLA-C01': { 1: 28, 2: 26, 3: 22, 4: 24 },
   'CLF-C02': { 1: 24, 2: 30, 3: 34, 4: 12 },
   'SAA-C03': { 1: 30, 2: 26, 3: 24, 4: 20 },
+  'AIF-C01': { 1: 20, 2: 24, 3: 28, 4: 14, 5: 14 },
+  'DVA-C02': { 1: 32, 2: 26, 3: 24, 4: 18 },
+  'SOA-C02': { 1: 20, 2: 16, 3: 18, 4: 16, 5: 18, 6: 12 },
+  'DEA-C01': { 1: 34, 2: 26, 3: 22, 4: 18 },
 };
 
 let totalErrors = 0;
@@ -45,6 +51,12 @@ async function validateExam(examId: ExamId): Promise<void> {
     console.error(`  [ERROR] ${msg}`);
     examErrors++;
     totalErrors++;
+  }
+
+  // 問題数が0件の場合はデータ未作成としてスキップ
+  if (qs.length === 0) {
+    console.log(`  ⏭  ${examId}: 問題データ未作成のためスキップ`);
+    return;
   }
 
   // 件数
@@ -109,6 +121,24 @@ async function validateExam(examId: ExamId): Promise<void> {
     for (const c of q.choices) {
       if (!c.text.trim()) {
         examFail(`問題ID ${q.id}: 選択肢 ${c.id} のtextが空です`);
+      }
+    }
+
+    // choiceExplanations チェック（存在する場合のみ）
+    if (q.choiceExplanations !== undefined) {
+      const keys = Object.keys(q.choiceExplanations);
+      const requiredKeys = ["c1", "c2", "c3", "c4"];
+      for (const key of requiredKeys) {
+        if (!keys.includes(key)) {
+          examFail(`問題ID ${q.id}: choiceExplanations に "${key}" がありません`);
+        } else if (!q.choiceExplanations[key as keyof ChoiceExplanations].trim()) {
+          examFail(`問題ID ${q.id}: choiceExplanations.${key} が空です`);
+        }
+      }
+      for (const key of keys) {
+        if (!requiredKeys.includes(key)) {
+          examFail(`問題ID ${q.id}: choiceExplanations に不正なキー "${key}" があります`);
+        }
       }
     }
 

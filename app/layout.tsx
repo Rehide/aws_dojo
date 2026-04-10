@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   },
   title: "AWS 演習道場",
   description:
-    "AWS認定試験（MLA-C01・CLF-C02・SAA-C03）の試験対策サイト。各試験のドメイン別に練習問題で学習できます。",
+    "AWS認定試験（CLF-C02・SAA-C03・MLA-C01・AIF-C01・DVA-C02・SOA-C02・DEA-C01）の試験対策サイト。各試験のドメイン別に練習問題で学習できます。",
   openGraph: {
     title: "AWS 演習道場",
     description:
-      "AWS認定試験（MLA-C01・CLF-C02・SAA-C03）の試験対策。ドメイン別の練習問題で学習できます。",
+      "AWS認定試験7種（CLF-C02・SAA-C03・MLA-C01・AIF-C01・DVA-C02・SOA-C02・DEA-C01）の試験対策。ドメイン別の練習問題で学習できます。",
     type: "website",
     locale: "ja_JP",
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "AWS 演習道場",
     description:
-      "AWS認定試験（MLA-C01・CLF-C02・SAA-C03）の試験対策。ドメイン別の練習問題で学習できます。",
+      "AWS認定試験7種（CLF-C02・SAA-C03・MLA-C01・AIF-C01・DVA-C02・SOA-C02・DEA-C01）の試験対策。ドメイン別の練習問題で学習できます。",
   },
 };
 

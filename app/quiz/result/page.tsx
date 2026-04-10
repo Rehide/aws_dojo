@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { ChoiceExplanations } from "@/types/question";
 import { useRouter } from "next/navigation";
 import { useQuiz } from "@/hooks/useQuiz";
 import { EXAM_CONFIGS } from "@/constants/exams";
@@ -159,8 +160,7 @@ export default function ResultPage() {
           )}
           <button
             onClick={handleRestart}
-            className="rounded-xl py-3 text-sm font-bold text-white transition-opacity"
-            style={{ backgroundColor: "#0D9488" }}
+            className="rounded-xl bg-[#0D9488] py-3 text-sm font-bold text-white transition-colors hover:bg-[#0b7a70]"
           >
             同じ設定でもう一度
           </button>
@@ -272,6 +272,57 @@ export default function ResultPage() {
                         {q.explanation}
                       </p>
                     </div>
+
+                    {q.choiceExplanations && (
+                      <div className="mt-3">
+                        <p className="mb-2 text-xs font-semibold text-slate-600">
+                          【各選択肢のポイント】
+                        </p>
+                        <div className="space-y-1.5">
+                          {a.displayChoices.map((choice) => {
+                            const choiceKey =
+                              choice.id as keyof ChoiceExplanations;
+                            const isCorrectChoice =
+                              choice.id === q.correctChoiceId;
+                            const isSelectedWrong =
+                              choice.id === a.selectedChoiceId &&
+                              a.isCorrect === false;
+
+                            const containerClass = isCorrectChoice
+                              ? "rounded-lg border border-green-200 bg-green-50 p-2.5"
+                              : isSelectedWrong
+                                ? "rounded-lg border border-red-200 bg-red-50 p-2.5"
+                                : "rounded-lg border border-slate-200 bg-slate-50 p-2.5";
+
+                            const icon = isCorrectChoice ? (
+                              <span className="mt-0.5 shrink-0 text-xs font-bold text-green-600">
+                                ✓
+                              </span>
+                            ) : isSelectedWrong ? (
+                              <span className="mt-0.5 shrink-0 text-xs font-bold text-red-600">
+                                ✗
+                              </span>
+                            ) : (
+                              <span className="mt-0.5 w-3 shrink-0" />
+                            );
+
+                            return (
+                              <div key={choice.id} className={containerClass}>
+                                <div className="flex items-start gap-2">
+                                  {icon}
+                                  <span className="mt-0.5 shrink-0 text-xs font-semibold text-slate-600">
+                                    {choice.label}.
+                                  </span>
+                                  <p className="text-xs text-slate-600">
+                                    {q.choiceExplanations![choiceKey]}
+                                  </p>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

@@ -123,7 +123,7 @@ export function QuizSettingsPanel({ selectedExamId, onStart }: Props) {
                   className="h-4 w-4 accent-teal-600"
                 />
                 <span>
-                  ドメイン {domain}: {examConfig.domainLabels[domain]}
+                  Domain{domain}: {examConfig.domainLabels[domain]}
                 </span>
               </label>
             ))}
@@ -188,8 +188,7 @@ export function QuizSettingsPanel({ selectedExamId, onStart }: Props) {
         <button
           onClick={handleStart}
           disabled={!canStart}
-          className="w-full rounded-xl py-3 text-base font-bold text-white transition-opacity disabled:opacity-40"
-          style={{ backgroundColor: "#0D9488" }}
+          className="w-full rounded-xl bg-[#0D9488] py-3 text-base font-bold text-white transition-colors hover:bg-[#0b7a70] disabled:opacity-40"
         >
           出題開始
         </button>
