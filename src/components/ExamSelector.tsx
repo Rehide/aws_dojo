@@ -4,18 +4,17 @@ import { EXAM_IDS, EXAM_CONFIGS, type ExamId, type ExamLevel } from "@/constants
 import { ExamCard } from "@/components/ExamCard";
 
 interface Props {
-  selectedExamId: ExamId;
-  onSelect: (examId: ExamId) => void;
+  onNavigate: (examId: ExamId) => void;
 }
 
 const LEVEL_LABELS: Record<ExamLevel, string> = {
-  Foundational: 'Foundational',
-  Associate: 'Associate',
+  Foundational: "Foundational",
+  Associate: "Associate",
 };
 
-const LEVEL_ORDER: ExamLevel[] = ['Foundational', 'Associate'];
+const LEVEL_ORDER: ExamLevel[] = ["Foundational", "Associate"];
 
-export function ExamSelector({ selectedExamId, onSelect }: Props) {
+export function ExamSelector({ onNavigate }: Props) {
   const grouped = LEVEL_ORDER.map((level) => ({
     level,
     exams: EXAM_IDS.filter((id) => EXAM_CONFIGS[id].level === level),
@@ -38,8 +37,7 @@ export function ExamSelector({ selectedExamId, onSelect }: Props) {
                   <ExamCard
                     key={examId}
                     exam={EXAM_CONFIGS[examId]}
-                    isSelected={selectedExamId === examId}
-                    onSelect={onSelect}
+                    onSelect={onNavigate}
                   />
                 ))}
               </div>

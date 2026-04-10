@@ -1,0 +1,199 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useQuiz } from "@/hooks/useQuiz";
+import { EXAM_CONFIGS } from "@/constants/exams";
+import { ChoiceButton, type ChoiceButtonState } from "@/components/ChoiceButton";
+import { FeedbackPanel } from "@/components/FeedbackPanel";
+import { ProgressBar } from "@/components/ProgressBar";
+import { AdBanner } from "@/components/AdBanner";
+import type { DisplayChoice } from "@/types/quiz";
+
+export function QuizPage() {
+  const params = useParams<{ examId: string }>();
+  const router = useRouter();
+  const { session, selectedExamId, answerQuestion, goToQuestion, finishQuiz } = useQuiz();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (session === null) {
+      router.replace(`/exam/${params.examId}`);
+    }
+  }, [session, router, params.examId]);
+
+  if (!session) return null;
+
+  const { questions, answers, currentIndex, settings } = session;
+  const question = questions[currentIndex];
+  const answer = answers[currentIndex];
+  const isPractice = settings.mode === "practice";
+
+  const isAnswered = answer.selectedChoiceId !== null;
+  const isLastQuestion = currentIndex === questions.length - 1;
+
+  const getChoiceState = (choice: DisplayChoice): ChoiceButtonState => {
+    if (isPractice) {
+      if (answer.isCorrect === null) return "default";
+      if (choice.id === question.correctChoiceId) return "correct";
+      if (choice.id === answer.selectedChoiceId) return "incorrect";
+      return "disabled";
+    } else {
+      if (answer.selectedChoiceId === choice.id) return "selected";
+      return "default";
+    }
+  };
+
+  const isChoiceDisabled = (choice: DisplayChoice): boolean => {
+    if (isPractice) {
+      return answer.isCorrect !== null;
+    } else {
+      return answer.selectedChoiceId === choice.id;
+    }
+  };
+
+  const handleChoiceClick = (choiceId: string) => {
+    if (isPractice && answer.isCorrect !== null) return;
+    answerQuestion(question.id, choiceId);
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      goToQuestion(currentIndex - 1);
+      window.scrollTo(0, 0);
+    }
+  };
+
+  const handleNext = () => {
+    if (!isLastQuestion) {
+      goToQuestion(currentIndex + 1);
+      window.scrollTo(0, 0);
+    }
+  };
+
+  const handleFinish = () => {
+    if (!isLastQuestion) return;
+    if (isPractice && !isAnswered) return;
+    if (isSubmitting) return;
+
+    const unansweredCount = answers.filter(
+      (a) => a.selectedChoiceId === null,
+    ).length;
+
+    if (!isPractice && unansweredCount > 0) {
+      if (
+        !window.confirm(
+          `未回答の問題が ${unansweredCount} 問あります。採点しますか？`,
+        )
+      ) {
+        return;
+      }
+    }
+
+    setIsSubmitting(true);
+    finishQuiz();
+    router.push(`/exam/${params.examId}/result`);
+  };
+
+  const correctChoice = answer.displayChoices.find(
+    (c) => c.id === question.correctChoiceId,
+  )!;
+
+  const answeredCount = answers.filter((a) => a.selectedChoiceId !== null).length;
+
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-6">
+      {/* 進捗 */}
+      <div className="mb-6">
+        <div className="mb-2 flex items-center justify-between text-sm text-slate-600">
+          <span>
+            問 {currentIndex + 1} / {questions.length}
+          </span>
+          <span
+            className="rounded-full px-3 py-0.5 text-xs font-medium text-white"
+            style={{ backgroundColor: "#1E3A5F" }}
+          >
+            Domain {question.domain}: {EXAM_CONFIGS[selectedExamId].domainLabels[question.domain]}
+          </span>
+        </div>
+        <ProgressBar current={currentIndex} total={questions.length} />
+        {!isPractice && (
+          <p className="mt-1 text-right text-xs text-slate-400">
+            回答済み: {answeredCount} / {questions.length}
+          </p>
+        )}
+      </div>
+
+      {/* 問題カード */}
+      <div className="mb-6 rounded-2xl bg-white p-6 shadow-md">
+        <p className="mb-6 whitespace-pre-wrap text-base leading-relaxed text-slate-800">
+          {question.question}
+        </p>
+
+        <div className="space-y-3">
+          {answer.displayChoices.map((choice) => (
+            <ChoiceButton
+              key={choice.id}
+              choice={choice}
+              state={getChoiceState(choice)}
+              onClick={() => handleChoiceClick(choice.id)}
+              disabled={isChoiceDisabled(choice)}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* フィードバック（practiceモードのみ） */}
+      {isPractice && answer.isCorrect !== null && (
+        <div className="mb-6">
+          <FeedbackPanel
+            isCorrect={answer.isCorrect}
+            correctChoice={correctChoice}
+            selectedChoiceId={answer.selectedChoiceId!}
+            explanation={question.explanation}
+            displayChoices={answer.displayChoices}
+            choiceExplanations={question.choiceExplanations}
+          />
+        </div>
+      )}
+
+      {/* ナビゲーション */}
+      <div className="flex gap-3">
+        <button
+          onClick={handlePrev}
+          disabled={currentIndex === 0}
+          className="rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 disabled:opacity-40"
+        >
+          ← 前の問題
+        </button>
+
+        <div className="flex-1" />
+
+        {!isLastQuestion && (
+          <button
+            onClick={handleNext}
+            className="rounded-xl bg-[#0D9488] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#0b7a70]"
+          >
+            次の問題 →
+          </button>
+        )}
+
+        {isLastQuestion && (
+          <button
+            onClick={handleFinish}
+            disabled={(isPractice && !isAnswered) || isSubmitting}
+            className="flex items-center gap-2 rounded-xl bg-[#1E3A5F] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#172d4a] disabled:opacity-40"
+          >
+            {isSubmitting && (
+              <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+            )}
+            {isSubmitting ? "採点中..." : isPractice ? "結果を見る" : "採点する"}
+          </button>
+        )}
+      </div>
+
+      {/* 広告 */}
+      <AdBanner adSlot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_QUIZ ?? ""} />
+    </div>
+  );
+}
