@@ -7,6 +7,7 @@ import { useQuiz } from "@/hooks/useQuiz";
 import { EXAM_CONFIGS } from "@/constants/exams";
 import { calculateScore } from "@/utils/scoring";
 import { calculateDomainStats, detectWeakness } from "@/utils/domainStats";
+import { AdBanner } from "@/components/AdBanner";
 
 export default function ResultPage() {
   const router = useRouter();
@@ -172,6 +173,8 @@ export default function ResultPage() {
           </button>
         </div>
       </div>
+
+      <AdBanner adSlot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_RESULT ?? ""} />
 
       {/* 問題一覧 */}
       <div className="rounded-2xl bg-white p-6 shadow-md">

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useQuiz } from "@/hooks/useQuiz";
 import { ExamSelector } from "@/components/ExamSelector";
 import { QuizSettingsPanel } from "@/components/QuizSettingsPanel";
+import { AdBanner } from "@/components/AdBanner";
 import type { QuizSettings } from "@/types/quiz";
 
 export default function HomePage() {
@@ -30,6 +31,9 @@ export default function HomePage() {
       </div>
       <ExamSelector selectedExamId={selectedExamId} onSelect={selectExam} />
       <QuizSettingsPanel selectedExamId={selectedExamId} onStart={handleStart} />
+      <div className="mx-auto max-w-xl px-4">
+        <AdBanner adSlot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP ?? ""} />
+      </div>
     </div>
   );
 }
