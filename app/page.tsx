@@ -1,19 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useQuiz } from "@/hooks/useQuiz";
 import { ExamSelector } from "@/components/ExamSelector";
-import { QuizSettingsPanel } from "@/components/QuizSettingsPanel";
 import { AdBanner } from "@/components/AdBanner";
-import type { QuizSettings } from "@/types/quiz";
+import type { ExamId } from "@/constants/exams";
 
 export default function HomePage() {
   const router = useRouter();
-  const { selectedExamId, selectExam, startQuiz } = useQuiz();
 
-  const handleStart = (settings: QuizSettings) => {
-    startQuiz(settings);
-    router.push("/quiz");
+  const handleNavigate = (examId: ExamId) => {
+    router.push(`/exam/${examId.toLowerCase()}`);
   };
 
   return (
@@ -29,9 +25,8 @@ export default function HomePage() {
           ※ 掲載問題はすべてオリジナルで作成したものです
         </p>
       </div>
-      <ExamSelector selectedExamId={selectedExamId} onSelect={selectExam} />
-      <QuizSettingsPanel selectedExamId={selectedExamId} onStart={handleStart} />
-      <div className="mx-auto max-w-xl px-4">
+      <ExamSelector onNavigate={handleNavigate} />
+      <div className="mx-auto max-w-2xl px-4">
         <AdBanner adSlot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP ?? ""} />
       </div>
     </div>
