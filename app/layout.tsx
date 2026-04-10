@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import "./globals.css";
 import { QuizProvider } from "@/contexts/QuizContext";
 import { Header } from "@/components/Header";
@@ -42,15 +41,16 @@ export default function RootLayout({
 
   return (
     <html lang="ja">
-      <body className="flex min-h-screen flex-col">
+      <head>
         {pubId && (
-          <Script
+          <script
             async
             src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${pubId}`}
             crossOrigin="anonymous"
-            strategy="afterInteractive"
           />
         )}
+      </head>
+      <body className="flex min-h-screen flex-col">
         <QuizProvider>
           <Header />
           <main className="flex-1">{children}</main>
