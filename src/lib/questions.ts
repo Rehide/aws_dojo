@@ -17,6 +17,12 @@ const QUESTION_MAP: Record<ExamId, Question[]> = {
   'DVA-C02': dvaC02Questions as Question[],
   'SOA-C02': soaC02Questions as Question[],
   'DEA-C01': deaC01Questions as Question[],
+  // Coming Soon（問題なし）
+  'SAP-C02': [],
+  'DOP-C02': [],
+  'ANS-C01': [],
+  'MLS-C01': [],
+  'SCS-C02': [],
 };
 
 export function getQuestions(examId: ExamId): Question[] {

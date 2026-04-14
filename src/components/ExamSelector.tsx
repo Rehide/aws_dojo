@@ -1,6 +1,12 @@
 "use client";
 
-import { EXAM_IDS, EXAM_CONFIGS, type ExamId, type ExamLevel } from "@/constants/exams";
+import {
+  EXAM_IDS,
+  COMING_SOON_EXAM_IDS,
+  EXAM_CONFIGS,
+  type ExamId,
+  type ExamLevel,
+} from "@/constants/exams";
 import { ExamCard } from "@/components/ExamCard";
 
 interface Props {
@@ -10,15 +16,25 @@ interface Props {
 const LEVEL_LABELS: Record<ExamLevel, string> = {
   Foundational: "Foundational",
   Associate: "Associate",
+  Professional: "Professional",
+  Specialty: "Specialty",
 };
 
-const LEVEL_ORDER: ExamLevel[] = ["Foundational", "Associate"];
+const LEVEL_ORDER: ExamLevel[] = [
+  "Foundational",
+  "Associate",
+  "Professional",
+  "Specialty",
+];
 
 export function ExamSelector({ onNavigate }: Props) {
-  const grouped = LEVEL_ORDER.map((level) => ({
-    level,
-    exams: EXAM_IDS.filter((id) => EXAM_CONFIGS[id].level === level),
-  }));
+  const grouped = LEVEL_ORDER.map((level) => {
+    const isPending = level === "Professional" || level === "Specialty";
+    const ids = isPending
+      ? COMING_SOON_EXAM_IDS.filter((id) => EXAM_CONFIGS[id].level === level)
+      : EXAM_IDS.filter((id) => EXAM_CONFIGS[id].level === level);
+    return { level, exams: ids };
+  }).filter(({ exams }) => exams.length > 0);
 
   return (
     <div className="mx-auto w-full max-w-2xl px-4 pb-2 pt-4">

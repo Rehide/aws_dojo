@@ -21,6 +21,12 @@ const EXPECTED_DOMAIN_COUNTS: Record<ExamId, Record<number, number>> = {
   'DVA-C02': { 1: 32, 2: 26, 3: 24, 4: 18 },
   'SOA-C02': { 1: 20, 2: 16, 3: 18, 4: 16, 5: 18, 6: 12 },
   'DEA-C01': { 1: 34, 2: 26, 3: 22, 4: 18 },
+  // Coming Soon（問題なし・検証スキップ）
+  'SAP-C02': {},
+  'DOP-C02': {},
+  'ANS-C01': {},
+  'MLS-C01': {},
+  'SCS-C02': {},
 };
 
 let totalErrors = 0;

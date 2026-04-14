@@ -5,9 +5,16 @@ export type ExamId =
   | 'AIF-C01'
   | 'DVA-C02'
   | 'SOA-C02'
-  | 'DEA-C01';
+  | 'DEA-C01'
+  // Professional
+  | 'SAP-C02'
+  | 'DOP-C02'
+  // Specialty
+  | 'ANS-C01'
+  | 'MLS-C01'
+  | 'SCS-C02';
 
-export type ExamLevel = 'Foundational' | 'Associate';
+export type ExamLevel = 'Foundational' | 'Associate' | 'Professional' | 'Specialty';
 
 export interface ExamConfig {
   id: ExamId;
@@ -18,6 +25,7 @@ export interface ExamConfig {
   domainLabels: Record<number, string>;
   domainIds: number[];
   totalQuestions: number;
+  comingSoon?: boolean;
 }
 
 export const EXAM_CONFIGS: Record<ExamId, ExamConfig> = {
@@ -129,9 +137,71 @@ export const EXAM_CONFIGS: Record<ExamId, ExamConfig> = {
     domainIds: [1, 2, 3, 4],
     totalQuestions: 100,
   },
+  // Professional
+  'SAP-C02': {
+    id: 'SAP-C02',
+    name: 'SAP-C02',
+    fullName: 'AWS Certified Solutions Architect – Professional',
+    shortName: 'Solutions Architect Pro',
+    level: 'Professional',
+    domainLabels: {},
+    domainIds: [],
+    totalQuestions: 0,
+    comingSoon: true,
+  },
+  'DOP-C02': {
+    id: 'DOP-C02',
+    name: 'DOP-C02',
+    fullName: 'AWS Certified DevOps Engineer – Professional',
+    shortName: 'DevOps Engineer Pro',
+    level: 'Professional',
+    domainLabels: {},
+    domainIds: [],
+    totalQuestions: 0,
+    comingSoon: true,
+  },
+  // Specialty
+  'ANS-C01': {
+    id: 'ANS-C01',
+    name: 'ANS-C01',
+    fullName: 'AWS Certified Advanced Networking – Specialty',
+    shortName: 'Advanced Networking',
+    level: 'Specialty',
+    domainLabels: {},
+    domainIds: [],
+    totalQuestions: 0,
+    comingSoon: true,
+  },
+  'MLS-C01': {
+    id: 'MLS-C01',
+    name: 'MLS-C01',
+    fullName: 'AWS Certified Machine Learning – Specialty',
+    shortName: 'Machine Learning Spe',
+    level: 'Specialty',
+    domainLabels: {},
+    domainIds: [],
+    totalQuestions: 0,
+    comingSoon: true,
+  },
+  'SCS-C02': {
+    id: 'SCS-C02',
+    name: 'SCS-C02',
+    fullName: 'AWS Certified Security – Specialty',
+    shortName: 'Security',
+    level: 'Specialty',
+    domainLabels: {},
+    domainIds: [],
+    totalQuestions: 0,
+    comingSoon: true,
+  },
 } as const;
 
 export const EXAM_IDS: ExamId[] = [
   'MLA-C01', 'CLF-C02', 'SAA-C03',
   'AIF-C01', 'DVA-C02', 'SOA-C02', 'DEA-C01',
+];
+
+export const COMING_SOON_EXAM_IDS: ExamId[] = [
+  'SAP-C02', 'DOP-C02',
+  'ANS-C01', 'MLS-C01', 'SCS-C02',
 ];
