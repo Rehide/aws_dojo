@@ -7,6 +7,7 @@ import { EXAM_CONFIGS, type ExamId } from "@/constants/exams";
 import { EXAM_CONTENTS } from "@/constants/examContent";
 import { QuizSettingsPanel } from "@/components/QuizSettingsPanel";
 import { FaqSection } from "@/components/FaqSection";
+import { AdBanner } from "@/components/AdBanner";
 import type { QuizSettings } from "@/types/quiz";
 
 export function ExamTopPage() {
@@ -121,6 +122,9 @@ export function ExamTopPage() {
 
         {/* FAQ */}
         <FaqSection faqs={content.faq} />
+
+        {/* 広告 */}
+        <AdBanner adSlot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_EXAM ?? ""} />
 
         {/* 次のステップ */}
         {content.nextExams.length > 0 && (
