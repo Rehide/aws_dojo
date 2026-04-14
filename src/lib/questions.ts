@@ -23,7 +23,6 @@ const QUESTION_MAP: Record<ExamId, Question[]> = {
   'ANS-C01': [],
   'MLS-C01': [],
   'SCS-C02': [],
-  'PAS-C01': [],
 };
 
 export function getQuestions(examId: ExamId): Question[] {

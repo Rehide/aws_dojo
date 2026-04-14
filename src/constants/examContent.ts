@@ -426,16 +426,4 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
     faq: [],
     nextExams: [],
   },
-  'PAS-C01': {
-    examId: 'PAS-C01',
-    metaTitle: 'PAS-C01 練習問題・模擬試験・解説 | AWS無料試験問題集',
-    metaDescription: 'AWS Certified SAP on AWS – Specialty (PAS-C01) の練習問題を準備中です。',
-    summary: '準備中です。',
-    targetAudience: '準備中です。',
-    prerequisites: '準備中です。',
-    studyOrder: [],
-    keyPoints: [],
-    faq: [],
-    nextExams: [],
-  },
 };

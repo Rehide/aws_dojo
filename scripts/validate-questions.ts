@@ -27,7 +27,6 @@ const EXPECTED_DOMAIN_COUNTS: Record<ExamId, Record<number, number>> = {
   'ANS-C01': {},
   'MLS-C01': {},
   'SCS-C02': {},
-  'PAS-C01': {},
 };
 
 let totalErrors = 0;

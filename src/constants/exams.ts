@@ -12,8 +12,7 @@ export type ExamId =
   // Specialty
   | 'ANS-C01'
   | 'MLS-C01'
-  | 'SCS-C02'
-  | 'PAS-C01';
+  | 'SCS-C02';
 
 export type ExamLevel = 'Foundational' | 'Associate' | 'Professional' | 'Specialty';
 
@@ -195,17 +194,6 @@ export const EXAM_CONFIGS: Record<ExamId, ExamConfig> = {
     totalQuestions: 0,
     comingSoon: true,
   },
-  'PAS-C01': {
-    id: 'PAS-C01',
-    name: 'PAS-C01',
-    fullName: 'AWS Certified SAP on AWS – Specialty',
-    shortName: 'SAP on AWS',
-    level: 'Specialty',
-    domainLabels: {},
-    domainIds: [],
-    totalQuestions: 0,
-    comingSoon: true,
-  },
 } as const;
 
 export const EXAM_IDS: ExamId[] = [
@@ -215,5 +203,5 @@ export const EXAM_IDS: ExamId[] = [
 
 export const COMING_SOON_EXAM_IDS: ExamId[] = [
   'SAP-C02', 'DOP-C02',
-  'ANS-C01', 'MLS-C01', 'SCS-C02', 'PAS-C01',
+  'ANS-C01', 'MLS-C01', 'SCS-C02',
 ];
