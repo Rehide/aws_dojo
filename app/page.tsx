@@ -16,7 +16,7 @@ export default function HomePage() {
     <div className="py-4">
       <div className="mx-auto max-w-xl px-4 py-4 text-center">
         <h1 className="text-2xl font-bold" style={{ color: "#1E3A5F" }}>
-          AWS 演習道場
+          AWS無料試験問題集
         </h1>
         <p className="mt-2 text-sm text-slate-500">
           AWS認定試験の試験対策

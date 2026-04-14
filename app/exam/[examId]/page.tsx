@@ -16,10 +16,10 @@ export async function generateMetadata({
   const config = EXAM_CONFIGS[id];
   if (!config) return {};
   return {
-    title: `${config.name} 練習問題 | AWS 演習道場`,
+    title: `${config.name} 練習問題 | AWS無料試験問題集`,
     description: `${config.fullName}（${config.name}）の試験対策。ドメイン別の練習問題で学習できます。`,
     openGraph: {
-      title: `${config.name} 練習問題 | AWS 演習道場`,
+      title: `${config.name} 練習問題 | AWS無料試験問題集`,
       description: `${config.fullName}（${config.name}）の試験対策。ドメイン別の練習問題で学習できます。`,
       type: "website",
       locale: "ja_JP",
