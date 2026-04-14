@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { EXAM_IDS, EXAM_CONFIGS, type ExamId } from "@/constants/exams";
+import { EXAM_CONTENTS } from "@/constants/examContent";
 import { ExamTopPage } from "@/components/pages/ExamTopPage";
 
 export function generateStaticParams() {
@@ -15,12 +16,13 @@ export async function generateMetadata({
   const id = examId.toUpperCase() as ExamId;
   const config = EXAM_CONFIGS[id];
   if (!config) return {};
+  const content = EXAM_CONTENTS[id];
   return {
-    title: `${config.name} 練習問題 | AWS無料試験問題集`,
-    description: `${config.fullName}（${config.name}）の試験対策。ドメイン別の練習問題で学習できます。`,
+    title: content.metaTitle,
+    description: content.metaDescription,
     openGraph: {
-      title: `${config.name} 練習問題 | AWS無料試験問題集`,
-      description: `${config.fullName}（${config.name}）の試験対策。ドメイン別の練習問題で学習できます。`,
+      title: content.metaTitle,
+      description: content.metaDescription,
       type: "website",
       locale: "ja_JP",
     },

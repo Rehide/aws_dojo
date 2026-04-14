@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://awsdojo.vercel.app"),
   verification: {
     google: "2r5ytV3xEQ7clzHxlWzewW-n56AXj__BGijJVHE4xkE",
   },
