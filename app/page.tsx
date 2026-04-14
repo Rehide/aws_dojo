@@ -5,6 +5,24 @@ import { ExamSelector } from "@/components/ExamSelector";
 import { AdBanner } from "@/components/AdBanner";
 import type { ExamId } from "@/constants/exams";
 
+const BEGINNER_GUIDES = [
+  {
+    label: "AWSが初めての方",
+    description: "まずはクラウドの基礎から",
+    examId: "CLF-C02" as ExamId,
+  },
+  {
+    label: "クラウド経験あり",
+    description: "アーキテクト資格の定番",
+    examId: "SAA-C03" as ExamId,
+  },
+  {
+    label: "AI・生成AIに興味がある方",
+    description: "未経験でも始めやすい入門資格",
+    examId: "AIF-C01" as ExamId,
+  },
+] as const;
+
 export default function HomePage() {
   const router = useRouter();
 
@@ -25,6 +43,29 @@ export default function HomePage() {
           ※ 掲載問題はすべてオリジナルで作成したものです
         </p>
       </div>
+
+      {/* 初心者向けガイド */}
+      <div className="mx-auto max-w-2xl px-4 pb-2">
+        <h2 className="mb-3 text-sm font-bold text-slate-500">
+          どの試験から始める？
+        </h2>
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+          {BEGINNER_GUIDES.map(({ label, description, examId }) => (
+            <button
+              key={examId}
+              onClick={() => handleNavigate(examId)}
+              className="flex flex-col items-start rounded-lg border border-slate-200 px-4 py-3 text-left hover:border-teal-400 hover:bg-teal-50"
+            >
+              <span className="text-xs font-semibold text-teal-600">{label}</span>
+              <span className="mt-0.5 text-sm font-bold" style={{ color: "#1E3A5F" }}>
+                {examId}
+              </span>
+              <span className="mt-0.5 text-xs text-slate-500">{description}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
       <ExamSelector onNavigate={handleNavigate} />
       <div className="mx-auto max-w-2xl px-4">
         <AdBanner adSlot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP ?? ""} />
