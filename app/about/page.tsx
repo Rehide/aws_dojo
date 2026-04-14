@@ -11,11 +11,9 @@ export const metadata: Metadata = {
 };
 
 const UPDATE_HISTORY = [
-  { date: "2026-04", content: "Ph3: SEO改善・FAQセクション・サイトについてページ追加" },
-  { date: "2026-04", content: "Ph2.2: 試験別個別URL実装・クイズページ広告追加" },
-  { date: "2026-04", content: "Ph2.1: 7試験対応・選択肢別解説（choiceExplanations）追加" },
-  { date: "2026-03", content: "Ph2: マルチ試験プラットフォーム公開（CLF-C02・SAA-C03追加）" },
-  { date: "2026-03", content: "Ph1: MLA-C01 演習サイト初公開" },
+  { date: "2026-04", content: "Professional・Specialty試験をComing Soonで追加（SAP-C02・DOP-C02・ANS-C01・MLS-C01・SCS-C02・PAS-C01）" },
+  { date: "2026-04", content: "試験別個別URLを実装・7試験対応（CLF-C02・SAA-C03・MLA-C01・AIF-C01・DVA-C02・SOA-C02・DEA-C01）" },
+  { date: "2026-03", content: "AWS無料試験問題集を公開（MLA-C01・CLF-C02・SAA-C03）" },
 ];
 
 const SUPPORTED_EXAMS = [
