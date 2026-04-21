@@ -70,6 +70,42 @@ export default function HomePage() {
       </div>
 
       <ExamSelector onNavigate={handleNavigate} />
+
+      {/* サービスの目的 */}
+      <div className="mx-auto max-w-2xl px-4 pt-10">
+        <h2 className="mb-3 text-base font-bold" style={{ color: "#1E3A5F" }}>
+          AWS演習道場とは
+        </h2>
+        <p className="text-sm leading-relaxed text-slate-600">
+          AWS演習道場は、AWS認定試験の合格を目指す方に向けて、オリジナルの練習問題を無料で提供するサービスです。
+          試験ごとのドメイン別学習と模擬試験形式の両方に対応しており、学習の進捗に合わせて活用できます。
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-slate-600">
+          すべての問題はオリジナルで作成しており、AWS公式ドキュメントを根拠とした解説を付記しています。
+          各選択肢がなぜ正解・不正解なのかを個別に解説しているため、正解を覚えるだけでなく理解を深めることができます。
+        </p>
+      </div>
+
+      {/* 問題の品質方針 */}
+      <div className="mx-auto max-w-2xl px-4 pt-8 pb-10">
+        <h2 className="mb-3 text-base font-bold" style={{ color: "#1E3A5F" }}>
+          問題の品質方針
+        </h2>
+        <ul className="space-y-2">
+          {[
+            "すべてオリジナルで作成（既存資料の転載・引用なし）",
+            "AWS公式ドキュメントを根拠とした解説を付記",
+            "各選択肢の正解・不正解理由を個別に解説",
+            "試験のドメイン比率に沿った問題数配分",
+          ].map((item, i) => (
+            <li key={i} className="flex gap-2 text-sm text-slate-600">
+              <span className="mt-0.5 shrink-0 text-teal-500">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className="mx-auto max-w-2xl px-4">
         <AdBanner adSlot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_TOP ?? ""} />
       </div>
