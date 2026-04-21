@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー | AWS無料試験問題集",
+  title: "プライバシーポリシー | AWS演習道場〜無料試験問題集〜",
   description:
-    "AWS無料試験問題集のプライバシーポリシーです。個人情報の取り扱い・Cookie・Google AdSenseについて説明します。",
+    "AWS演習道場〜無料試験問題集〜のプライバシーポリシーです。個人情報の取り扱い・Cookie・Google AdSenseについて説明します。",
 };
 
 export default function PrivacyPage() {
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
           1. 個人情報の収集について
         </h2>
         <p className="text-sm leading-relaxed text-slate-600">
-          当サイト（AWS無料試験問題集）では、お問い合わせフォームを通じてお名前・メールアドレスを収集する場合があります。
+          当サイト（AWS演習道場〜無料試験問題集〜）では、お問い合わせフォームを通じてお名前・メールアドレスを収集する場合があります。
           収集した情報はお問い合わせへの返答のみに使用し、それ以外の目的には使用しません。
         </p>
       </section>

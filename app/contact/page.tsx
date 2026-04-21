@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "お問い合わせ | AWS無料試験問題集",
-  description: "AWS無料試験問題集へのお問い合わせはこちらから。問題の誤りのご指摘・ご要望・その他ご連絡をお受けしています。",
+  title: "お問い合わせ | AWS演習道場〜無料試験問題集〜",
+  description: "AWS演習道場〜無料試験問題集〜へのお問い合わせはこちらから。問題の誤りのご指摘・ご要望・その他ご連絡をお受けしています。",
 };
 
 export default function ContactPage() {

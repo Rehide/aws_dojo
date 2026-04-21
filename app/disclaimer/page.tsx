@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "免責事項 | AWS無料試験問題集",
+  title: "免責事項 | AWS演習道場〜無料試験問題集〜",
   description:
-    "AWS無料試験問題集の免責事項です。コンテンツの正確性・AWS商標・外部リンク・損害に関する方針を説明します。",
+    "AWS演習道場〜無料試験問題集〜の免責事項です。コンテンツの正確性・AWS商標・外部リンク・損害に関する方針を説明します。",
 };
 
 export default function DisclaimerPage() {
@@ -27,7 +27,7 @@ export default function DisclaimerPage() {
           1. コンテンツの正確性について
         </h2>
         <p className="text-sm leading-relaxed text-slate-600">
-          当サイト（AWS無料試験問題集）の問題・解説はすべてオリジナルで作成したものであり、AWS 公式試験の問題とは異なります。
+          当サイト（AWS演習道場〜無料試験問題集〜）の問題・解説はすべてオリジナルで作成したものであり、AWS 公式試験の問題とは異なります。
           内容の正確性・最新性には最善を尽くしていますが、完全な正確性を保証するものではありません。
         </p>
         <p className="mt-3 text-sm leading-relaxed text-slate-600">

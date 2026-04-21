@@ -33,7 +33,7 @@ export function Footer() {
             <ul className="space-y-1">
               <li>
                 <Link href="/about" className="hover:text-white">
-                  AWS無料試験問題集について
+                  AWS演習道場〜無料試験問題集〜について
                 </Link>
               </li>
               <li>
@@ -56,7 +56,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-slate-700 pt-4 text-center text-xs">
-          © 2026 AWS無料試験問題集
+          © 2026 AWS演習道場〜無料試験問題集〜
         </div>
       </div>
     </footer>

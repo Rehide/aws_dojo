@@ -66,7 +66,7 @@ export default async function Page({
       {
         "@type": "ListItem",
         position: 1,
-        name: "AWS無料試験問題集",
+        name: "AWS演習道場〜無料試験問題集〜",
         item: BASE_URL,
       },
       {

@@ -11,7 +11,7 @@ export function Header() {
       <div className="mx-auto max-w-5xl px-4">
         <div className="flex h-14 items-center justify-between">
           <Link href="/" className="text-lg font-bold tracking-tight">
-            AWS無料試験問題集
+            AWS演習道場〜無料試験問題集〜
           </Link>
 
           {/* PC nav */}

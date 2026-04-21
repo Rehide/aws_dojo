@@ -30,7 +30,7 @@ export type ExamContent = {
 export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
   'CLF-C02': {
     examId: 'CLF-C02',
-    metaTitle: 'CLF-C02 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'CLF-C02 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription:
       'AWS Certified Cloud Practitioner (CLF-C02) のオリジナル問題を無料で学習。クラウドの概念・セキュリティ・主要サービス・料金を4ドメイン別に網羅。初心者向け解説付き。',
     summary:
@@ -85,7 +85,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
 
   'SAA-C03': {
     examId: 'SAA-C03',
-    metaTitle: 'SAA-C03 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'SAA-C03 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription:
       'AWS Certified Solutions Architect – Associate (SAA-C03) のオリジナル問題を無料で学習。セキュア・高可用・高パフォーマンス・コスト最適化の4ドメインを網羅。解説付き。',
     summary:
@@ -141,7 +141,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
 
   'MLA-C01': {
     examId: 'MLA-C01',
-    metaTitle: 'MLA-C01 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'MLA-C01 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription:
       'AWS Certified Machine Learning Engineer – Associate (MLA-C01) のオリジナル問題を無料で学習。SageMakerを中心としたデータ・モデル開発・デプロイ・監視の4ドメインを解説付きで学習。',
     summary:
@@ -197,7 +197,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
 
   'AIF-C01': {
     examId: 'AIF-C01',
-    metaTitle: 'AIF-C01 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'AIF-C01 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription:
       'AWS Certified AI Practitioner (AIF-C01) のオリジナル問題を無料で学習。AI・ML基礎から生成AI・Amazon Bedrock・責任あるAIまで5ドメインを解説付きで対策。',
     summary:
@@ -254,7 +254,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
 
   'DVA-C02': {
     examId: 'DVA-C02',
-    metaTitle: 'DVA-C02 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'DVA-C02 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription:
       'AWS Certified Developer – Associate (DVA-C02) のオリジナル問題を無料で学習。Lambda・API Gateway・DynamoDB・CI/CDパイプラインなど開発者向け4ドメインを解説付きで対策。',
     summary:
@@ -310,7 +310,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
 
   'SOA-C02': {
     examId: 'SOA-C02',
-    metaTitle: 'SOA-C02 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'SOA-C02 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription:
       'AWS Certified SysOps Administrator – Associate (SOA-C02) のオリジナル問題を無料で学習。監視・運用・デプロイ・セキュリティ・ネットワーキングなど6ドメインを解説付きで対策。',
     summary:
@@ -369,7 +369,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
 
   'DEA-C01': {
     examId: 'DEA-C01',
-    metaTitle: 'DEA-C01 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'DEA-C01 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription:
       'AWS Certified Data Engineer – Associate (DEA-C01) のオリジナル問題を無料で学習。Glue・Kinesis・Redshift・Lake Formationなどデータ基盤の4ドメインを解説付きで対策。',
     summary:
@@ -426,7 +426,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
   // Coming Soon（問題準備中）
   'SAP-C02': {
     examId: 'SAP-C02',
-    metaTitle: 'SAP-C02 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'SAP-C02 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription: 'AWS Certified Solutions Architect – Professional (SAP-C02) の練習問題を準備中です。',
     summary: '準備中です。',
     targetAudience: '準備中です。',
@@ -439,7 +439,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
   },
   'DOP-C02': {
     examId: 'DOP-C02',
-    metaTitle: 'DOP-C02 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'DOP-C02 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription: 'AWS Certified DevOps Engineer – Professional (DOP-C02) の練習問題を準備中です。',
     summary: '準備中です。',
     targetAudience: '準備中です。',
@@ -452,7 +452,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
   },
   'ANS-C01': {
     examId: 'ANS-C01',
-    metaTitle: 'ANS-C01 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'ANS-C01 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription: 'AWS Certified Advanced Networking – Specialty (ANS-C01) の練習問題を準備中です。',
     summary: '準備中です。',
     targetAudience: '準備中です。',
@@ -465,7 +465,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
   },
   'MLS-C01': {
     examId: 'MLS-C01',
-    metaTitle: 'MLS-C01 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'MLS-C01 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription: 'AWS Certified Machine Learning – Specialty (MLS-C01) の練習問題を準備中です。',
     summary: '準備中です。',
     targetAudience: '準備中です。',
@@ -478,7 +478,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
   },
   'SCS-C02': {
     examId: 'SCS-C02',
-    metaTitle: 'SCS-C02 練習問題・模擬試験・解説 | AWS無料試験問題集',
+    metaTitle: 'SCS-C02 練習問題・模擬試験・解説 | AWS演習道場〜無料試験問題集〜',
     metaDescription: 'AWS Certified Security – Specialty (SCS-C02) の練習問題を準備中です。',
     summary: '準備中です。',
     targetAudience: '準備中です。',

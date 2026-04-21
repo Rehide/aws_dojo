@@ -10,7 +10,7 @@ const BASE_URL = "https://aws-exam-dojo.com";
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "AWS無料試験問題集",
+  name: "AWS演習道場〜無料試験問題集〜",
   url: BASE_URL,
   description:
     "AWS認定試験7種（CLF-C02・SAA-C03・MLA-C01・AIF-C01・DVA-C02・SOA-C02・DEA-C01）のオリジナル練習問題を無料で提供するサイトです。",
@@ -20,7 +20,7 @@ const websiteSchema = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "AWS無料試験問題集",
+  name: "AWS演習道場〜無料試験問題集〜",
   url: BASE_URL,
 };
 
@@ -29,11 +29,11 @@ export const metadata: Metadata = {
   verification: {
     google: "2r5ytV3xEQ7clzHxlWzewW-n56AXj__BGijJVHE4xkE",
   },
-  title: "AWS無料試験問題集",
+  title: "AWS演習道場〜無料試験問題集〜",
   description:
     "AWS認定試験（CLF-C02・SAA-C03・MLA-C01・AIF-C01・DVA-C02・SOA-C02・DEA-C01）の試験対策サイト。各試験のドメイン別に練習問題で学習できます。",
   openGraph: {
-    title: "AWS無料試験問題集",
+    title: "AWS演習道場〜無料試験問題集〜",
     description:
       "AWS認定試験7種（CLF-C02・SAA-C03・MLA-C01・AIF-C01・DVA-C02・SOA-C02・DEA-C01）の試験対策。ドメイン別の練習問題で学習できます。",
     type: "website",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "AWS無料試験問題集",
+    title: "AWS演習道場〜無料試験問題集〜",
     description:
       "AWS認定試験7種（CLF-C02・SAA-C03・MLA-C01・AIF-C01・DVA-C02・SOA-C02・DEA-C01）の試験対策。ドメイン別の練習問題で学習できます。",
   },

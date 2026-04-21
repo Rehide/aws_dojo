@@ -5,15 +5,15 @@ import { JsonLd } from "@/components/JsonLd";
 const BASE_URL = "https://aws-exam-dojo.com";
 
 export const metadata: Metadata = {
-  title: "AWS無料試験問題集について | AWS無料試験問題集",
+  title: "AWS演習道場〜無料試験問題集〜について | AWS演習道場〜無料試験問題集〜",
   description:
-    "AWS無料試験問題集はAWS認定試験のオリジナル練習問題を無料で提供するサービスです。問題の品質方針・サービスの目的・更新履歴をご紹介します。",
+    "AWS演習道場〜無料試験問題集〜はAWS認定試験のオリジナル練習問題を無料で提供するサービスです。問題の品質方針・サービスの目的・更新履歴をご紹介します。",
 };
 
 const UPDATE_HISTORY = [
   { date: "2026-04", content: "Professional・Specialty試験をComing Soonで追加（SAP-C02・DOP-C02・ANS-C01・MLS-C01・SCS-C02・PAS-C01）" },
   { date: "2026-04", content: "試験別個別URLを実装・7試験対応（CLF-C02・SAA-C03・MLA-C01・AIF-C01・DVA-C02・SOA-C02・DEA-C01）" },
-  { date: "2026-03", content: "AWS無料試験問題集を公開（MLA-C01・CLF-C02・SAA-C03）" },
+  { date: "2026-03", content: "AWS演習道場〜無料試験問題集〜を公開（MLA-C01・CLF-C02・SAA-C03）" },
 ];
 
 const SUPPORTED_EXAMS = [
@@ -29,10 +29,10 @@ const SUPPORTED_EXAMS = [
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "AWS無料試験問題集について",
+  name: "AWS演習道場〜無料試験問題集〜について",
   url: `${BASE_URL}/about`,
   description:
-    "AWS無料試験問題集はAWS認定試験のオリジナル練習問題を無料で提供するサービスです。",
+    "AWS演習道場〜無料試験問題集〜はAWS認定試験のオリジナル練習問題を無料で提供するサービスです。",
   inLanguage: "ja",
 };
 
@@ -48,7 +48,7 @@ export default function AboutPage() {
         </div>
 
         <h1 className="mt-4 text-xl font-bold" style={{ color: "#1E3A5F" }}>
-          AWS無料試験問題集について
+          AWS演習道場〜無料試験問題集〜について
         </h1>
 
         {/* サービスの目的 */}
@@ -57,7 +57,7 @@ export default function AboutPage() {
             サービスの目的
           </h2>
           <p className="text-sm leading-relaxed text-slate-600">
-            AWS無料試験問題集は、AWS認定試験の合格を目指す方に向けて、オリジナルの練習問題を無料で提供するサービスです。
+            AWS演習道場〜無料試験問題集〜は、AWS認定試験の合格を目指す方に向けて、オリジナルの練習問題を無料で提供するサービスです。
             試験ごとのドメイン別学習と模擬試験形式の両方に対応しており、学習の進捗に合わせて活用できます。
           </p>
           <p className="mt-3 text-sm leading-relaxed text-slate-600">
