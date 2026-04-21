@@ -23,6 +23,7 @@ export async function generateMetadata({
   return {
     title: content.metaTitle,
     description: content.metaDescription,
+    ...(config.comingSoon && { robots: { index: false } }),
     openGraph: {
       title: content.metaTitle,
       description: content.metaDescription,
