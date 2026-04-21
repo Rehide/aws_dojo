@@ -4,7 +4,7 @@ import { EXAM_CONTENTS } from "@/constants/examContent";
 import { ExamTopPage } from "@/components/pages/ExamTopPage";
 import { JsonLd } from "@/components/JsonLd";
 
-const BASE_URL = "https://awsdojo.vercel.app";
+const BASE_URL = "https://aws-exam-dojo.com";
 
 export function generateStaticParams() {
   return EXAM_IDS.map((id) => ({ examId: id.toLowerCase() }));

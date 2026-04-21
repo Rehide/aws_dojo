@@ -36,6 +36,21 @@ export function Footer() {
                   AWS無料試験問題集について
                 </Link>
               </li>
+              <li>
+                <Link href="/contact" className="hover:text-white">
+                  お問い合わせ
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-white">
+                  プライバシーポリシー
+                </Link>
+              </li>
+              <li>
+                <Link href="/disclaimer" className="hover:text-white">
+                  免責事項
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

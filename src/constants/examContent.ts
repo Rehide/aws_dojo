@@ -5,6 +5,14 @@ export type Faq = {
   a: string;
 };
 
+export type ExamDetail = {
+  duration: string;       // 試験時間（例: "90分"）
+  questionCount: number;  // 問題数
+  passingScore: number;   // 合格スコア（1000点満点）
+  fee: string;            // 受験料
+  format: string;         // 出題形式
+};
+
 export type ExamContent = {
   examId: ExamId;
   metaTitle: string;
@@ -16,6 +24,7 @@ export type ExamContent = {
   keyPoints: string[];
   faq: Faq[];
   nextExams: ExamId[];
+  examDetail: ExamDetail;
 };
 
 export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
@@ -65,6 +74,13 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
       },
     ],
     nextExams: ['SAA-C03', 'AIF-C01'],
+    examDetail: {
+      duration: '90分',
+      questionCount: 65,
+      passingScore: 700,
+      fee: '100 USD',
+      format: '選択式・複数選択式',
+    },
   },
 
   'SAA-C03': {
@@ -114,6 +130,13 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
       },
     ],
     nextExams: ['DVA-C02', 'SOA-C02'],
+    examDetail: {
+      duration: '130分',
+      questionCount: 65,
+      passingScore: 720,
+      fee: '150 USD',
+      format: '選択式・複数選択式',
+    },
   },
 
   'MLA-C01': {
@@ -163,6 +186,13 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
       },
     ],
     nextExams: [],
+    examDetail: {
+      duration: '130分',
+      questionCount: 65,
+      passingScore: 720,
+      fee: '150 USD',
+      format: '選択式・複数選択式',
+    },
   },
 
   'AIF-C01': {
@@ -213,6 +243,13 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
       },
     ],
     nextExams: ['MLA-C01'],
+    examDetail: {
+      duration: '90分',
+      questionCount: 65,
+      passingScore: 700,
+      fee: '100 USD',
+      format: '選択式・複数選択式',
+    },
   },
 
   'DVA-C02': {
@@ -262,6 +299,13 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
       },
     ],
     nextExams: [],
+    examDetail: {
+      duration: '130分',
+      questionCount: 65,
+      passingScore: 720,
+      fee: '150 USD',
+      format: '選択式・複数選択式',
+    },
   },
 
   'SOA-C02': {
@@ -314,6 +358,13 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
       },
     ],
     nextExams: [],
+    examDetail: {
+      duration: '130分',
+      questionCount: 65,
+      passingScore: 720,
+      fee: '150 USD',
+      format: '選択式・複数選択式',
+    },
   },
 
   'DEA-C01': {
@@ -363,6 +414,13 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
       },
     ],
     nextExams: [],
+    examDetail: {
+      duration: '130分',
+      questionCount: 65,
+      passingScore: 720,
+      fee: '150 USD',
+      format: '選択式・複数選択式',
+    },
   },
 
   // Coming Soon（問題準備中）
@@ -377,6 +435,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
     keyPoints: [],
     faq: [],
     nextExams: [],
+    examDetail: { duration: '170分', questionCount: 75, passingScore: 750, fee: '300 USD', format: '選択式・複数選択式' },
   },
   'DOP-C02': {
     examId: 'DOP-C02',
@@ -389,6 +448,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
     keyPoints: [],
     faq: [],
     nextExams: [],
+    examDetail: { duration: '180分', questionCount: 75, passingScore: 750, fee: '300 USD', format: '選択式・複数選択式' },
   },
   'ANS-C01': {
     examId: 'ANS-C01',
@@ -401,6 +461,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
     keyPoints: [],
     faq: [],
     nextExams: [],
+    examDetail: { duration: '170分', questionCount: 65, passingScore: 750, fee: '300 USD', format: '選択式・複数選択式' },
   },
   'MLS-C01': {
     examId: 'MLS-C01',
@@ -413,6 +474,7 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
     keyPoints: [],
     faq: [],
     nextExams: [],
+    examDetail: { duration: '180分', questionCount: 65, passingScore: 750, fee: '300 USD', format: '選択式・複数選択式' },
   },
   'SCS-C02': {
     examId: 'SCS-C02',
@@ -425,5 +487,6 @@ export const EXAM_CONTENTS: Record<ExamId, ExamContent> = {
     keyPoints: [],
     faq: [],
     nextExams: [],
+    examDetail: { duration: '170分', questionCount: 65, passingScore: 750, fee: '300 USD', format: '選択式・複数選択式' },
   },
 };

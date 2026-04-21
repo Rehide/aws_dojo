@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 
-const BASE_URL = "https://awsdojo.vercel.app";
+const BASE_URL = "https://aws-exam-dojo.com";
 
 const websiteSchema = {
   "@context": "https://schema.org",
@@ -25,7 +25,7 @@ const organizationSchema = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://awsdojo.vercel.app"),
+  metadataBase: new URL("https://aws-exam-dojo.com"),
   verification: {
     google: "2r5ytV3xEQ7clzHxlWzewW-n56AXj__BGijJVHE4xkE",
   },

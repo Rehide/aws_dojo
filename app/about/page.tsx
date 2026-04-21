@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 
-const BASE_URL = "https://awsdojo.vercel.app";
+const BASE_URL = "https://aws-exam-dojo.com";
 
 export const metadata: Metadata = {
   title: "AWS無料試験問題集について | AWS無料試験問題集",
@@ -123,6 +123,46 @@ export default function AboutPage() {
               ))}
             </tbody>
           </table>
+        </section>
+
+        {/* 運営者について */}
+        <section className="mt-8">
+          <h2 className="mb-3 text-base font-bold" style={{ color: "#1E3A5F" }}>
+            運営者について
+          </h2>
+          <dl className="space-y-3 text-sm">
+            <div className="flex gap-4">
+              <dt className="w-28 shrink-0 font-medium text-slate-700">運営者</dt>
+              <dd className="text-slate-600">
+                Rehide（
+                <a
+                  href="https://github.com/Rehide"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-teal-600 hover:underline"
+                >
+                  @Rehide
+                </a>
+                ）
+              </dd>
+            </div>
+            <div className="flex gap-4">
+              <dt className="w-28 shrink-0 font-medium text-slate-700">開設の目的</dt>
+              <dd className="leading-relaxed text-slate-600">
+                AWS 認定試験の合格を目指す方に、無料で質の高い練習問題を提供したいと考え開設しました。
+                公式ドキュメントを根拠にした解説付きの問題で、正解を覚えるだけでなく理解を深める学習をサポートします。
+              </dd>
+            </div>
+            <div className="flex gap-4">
+              <dt className="w-28 shrink-0 font-medium text-slate-700">お問い合わせ</dt>
+              <dd className="text-slate-600">
+                <Link href="/contact" className="text-teal-600 hover:underline">
+                  お問い合わせフォーム
+                </Link>
+                よりご連絡ください。
+              </dd>
+            </div>
+          </dl>
         </section>
       </div>
     </>
