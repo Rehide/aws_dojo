@@ -32,11 +32,6 @@ export function Footer() {
             </p>
             <ul className="space-y-1">
               <li>
-                <Link href="/about" className="hover:text-white">
-                  AWS演習道場について
-                </Link>
-              </li>
-              <li>
                 <Link href="/contact" className="hover:text-white">
                   お問い合わせ
                 </Link>

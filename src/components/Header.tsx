@@ -22,9 +22,6 @@ export function Header() {
             <Link href="/" className="text-sm hover:text-teal-300">
               ホーム
             </Link>
-            <Link href="/about" className="text-sm hover:text-teal-300">
-              サイトについて
-            </Link>
             <Link href="/contact" className="text-sm hover:text-teal-300">
               お問い合わせ
             </Link>
@@ -50,13 +47,6 @@ export function Header() {
               onClick={() => setMenuOpen(false)}
             >
               ホーム
-            </Link>
-            <Link
-              href="/about"
-              className="block py-2 text-sm hover:text-teal-300"
-              onClick={() => setMenuOpen(false)}
-            >
-              サイトについて
             </Link>
             <Link
               href="/contact"
