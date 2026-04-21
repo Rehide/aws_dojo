@@ -27,7 +27,7 @@ export default function DisclaimerPage() {
           1. コンテンツの正確性について
         </h2>
         <p className="text-sm leading-relaxed text-slate-600">
-          当サイト（AWS演習道場〜無料試験問題集〜）の問題・解説はすべてオリジナルで作成したものであり、AWS 公式試験の問題とは異なります。
+          当サイト（AWS演習道場）の問題・解説はすべてオリジナルで作成したものであり、AWS 公式試験の問題とは異なります。
           内容の正確性・最新性には最善を尽くしていますが、完全な正確性を保証するものではありません。
         </p>
         <p className="mt-3 text-sm leading-relaxed text-slate-600">

@@ -40,7 +40,7 @@ export default function HomePage() {
           </span>
         </h1>
         <p className="mt-2 text-sm text-slate-500">
-          AWS認定試験の練習問題集
+          AWS認定試験の無料試験問題集
         </p>
         <p className="mt-1 text-xs text-slate-400">
           ※ 掲載問題はすべてオリジナルで作成したものです
