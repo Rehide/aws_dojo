@@ -10,14 +10,20 @@ export function Header() {
     <header style={{ backgroundColor: "#1E3A5F" }} className="text-white">
       <div className="mx-auto max-w-5xl px-4">
         <div className="flex h-14 items-center justify-between">
-          <Link href="/" className="text-lg font-bold tracking-tight">
-            AWS無料試験問題集
+          <Link href="/" className="flex items-center gap-2">
+            <span className="text-lg font-bold tracking-tight">AWS演習道場</span>
+            <span className="rounded bg-teal-500 px-1.5 py-0.5 text-xs font-medium text-white">
+              無料
+            </span>
           </Link>
 
           {/* PC nav */}
           <nav className="hidden gap-6 md:flex">
             <Link href="/" className="text-sm hover:text-teal-300">
               ホーム
+            </Link>
+            <Link href="/contact" className="text-sm hover:text-teal-300">
+              お問い合わせ
             </Link>
           </nav>
 
@@ -41,6 +47,13 @@ export function Header() {
               onClick={() => setMenuOpen(false)}
             >
               ホーム
+            </Link>
+            <Link
+              href="/contact"
+              className="block py-2 text-sm hover:text-teal-300"
+              onClick={() => setMenuOpen(false)}
+            >
+              お問い合わせ
             </Link>
           </nav>
         )}

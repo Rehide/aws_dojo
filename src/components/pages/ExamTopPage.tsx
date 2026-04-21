@@ -77,9 +77,29 @@ export function ExamTopPage() {
                 <th className="py-2 pr-4 text-left font-medium text-slate-500 w-24">前提知識</th>
                 <td className="py-2 text-slate-700">{content.prerequisites}</td>
               </tr>
-              <tr>
+              <tr className="border-b border-slate-100">
                 <th className="py-2 pr-4 text-left font-medium text-slate-500 w-24">総問題数</th>
                 <td className="py-2 text-slate-700">{examConfig.totalQuestions}問</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <th className="py-2 pr-4 text-left font-medium text-slate-500 w-24">試験時間</th>
+                <td className="py-2 text-slate-700">{content.examDetail.duration}</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <th className="py-2 pr-4 text-left font-medium text-slate-500 w-24">出題数</th>
+                <td className="py-2 text-slate-700">{content.examDetail.questionCount}問</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <th className="py-2 pr-4 text-left font-medium text-slate-500 w-24">合格スコア</th>
+                <td className="py-2 text-slate-700">{content.examDetail.passingScore}点（1000点満点）</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <th className="py-2 pr-4 text-left font-medium text-slate-500 w-24">受験料</th>
+                <td className="py-2 text-slate-700">{content.examDetail.fee}</td>
+              </tr>
+              <tr>
+                <th className="py-2 pr-4 text-left font-medium text-slate-500 w-24">出題形式</th>
+                <td className="py-2 text-slate-700">{content.examDetail.format}</td>
               </tr>
             </tbody>
           </table>

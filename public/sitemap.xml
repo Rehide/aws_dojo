@@ -1,57 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://awsdojo.vercel.app/</loc>
+    <loc>https://aws-exam-dojo.com/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://awsdojo.vercel.app/exam/mla-c01</loc>
+    <loc>https://aws-exam-dojo.com/exam/mla-c01</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://awsdojo.vercel.app/exam/clf-c02</loc>
+    <loc>https://aws-exam-dojo.com/exam/clf-c02</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://awsdojo.vercel.app/exam/saa-c03</loc>
+    <loc>https://aws-exam-dojo.com/exam/saa-c03</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://awsdojo.vercel.app/exam/aif-c01</loc>
+    <loc>https://aws-exam-dojo.com/exam/aif-c01</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://awsdojo.vercel.app/exam/dva-c02</loc>
+    <loc>https://aws-exam-dojo.com/exam/dva-c02</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://awsdojo.vercel.app/exam/soa-c02</loc>
+    <loc>https://aws-exam-dojo.com/exam/soa-c02</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://awsdojo.vercel.app/exam/dea-c01</loc>
+    <loc>https://aws-exam-dojo.com/exam/dea-c01</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://awsdojo.vercel.app/about</loc>
-    <lastmod>2026-04-14</lastmod>
+    <loc>https://aws-exam-dojo.com/contact</loc>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://aws-exam-dojo.com/privacy</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aws-exam-dojo.com/disclaimer</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

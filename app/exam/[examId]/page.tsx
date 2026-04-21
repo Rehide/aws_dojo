@@ -4,7 +4,7 @@ import { EXAM_CONTENTS } from "@/constants/examContent";
 import { ExamTopPage } from "@/components/pages/ExamTopPage";
 import { JsonLd } from "@/components/JsonLd";
 
-const BASE_URL = "https://awsdojo.vercel.app";
+const BASE_URL = "https://aws-exam-dojo.com";
 
 export function generateStaticParams() {
   return EXAM_IDS.map((id) => ({ examId: id.toLowerCase() }));
@@ -23,6 +23,7 @@ export async function generateMetadata({
   return {
     title: content.metaTitle,
     description: content.metaDescription,
+    ...(config.comingSoon && { robots: { index: false } }),
     openGraph: {
       title: content.metaTitle,
       description: content.metaDescription,
@@ -66,7 +67,7 @@ export default async function Page({
       {
         "@type": "ListItem",
         position: 1,
-        name: "AWS無料試験問題集",
+        name: "AWS演習道場〜無料試験問題集〜",
         item: BASE_URL,
       },
       {
