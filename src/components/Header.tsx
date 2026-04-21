@@ -10,8 +10,11 @@ export function Header() {
     <header style={{ backgroundColor: "#1E3A5F" }} className="text-white">
       <div className="mx-auto max-w-5xl px-4">
         <div className="flex h-14 items-center justify-between">
-          <Link href="/" className="text-lg font-bold tracking-tight">
-            AWS演習道場〜無料試験問題集〜
+          <Link href="/" className="flex items-center gap-2">
+            <span className="text-lg font-bold tracking-tight">AWS演習道場</span>
+            <span className="rounded bg-teal-500 px-1.5 py-0.5 text-xs font-medium text-white">
+              無料
+            </span>
           </Link>
 
           {/* PC nav */}

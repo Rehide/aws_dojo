@@ -33,11 +33,14 @@ export default function HomePage() {
   return (
     <div className="py-4">
       <div className="mx-auto max-w-xl px-4 py-4 text-center">
-        <h1 className="text-2xl font-bold" style={{ color: "#1E3A5F" }}>
-          AWS演習道場〜無料試験問題集〜
+        <h1 className="flex items-center justify-center gap-2 text-2xl font-bold" style={{ color: "#1E3A5F" }}>
+          AWS演習道場
+          <span className="rounded bg-teal-500 px-1.5 py-0.5 text-xs font-medium text-white">
+            無料
+          </span>
         </h1>
         <p className="mt-2 text-sm text-slate-500">
-          AWS認定試験の試験対策
+          AWS認定試験の練習問題集
         </p>
         <p className="mt-1 text-xs text-slate-400">
           ※ 掲載問題はすべてオリジナルで作成したものです
